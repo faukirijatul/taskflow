@@ -1,6 +1,13 @@
 import 'dotenv/config';
+import { APP_DEFAULTS } from '../constants/defaults';
 
 export const ENV = {
-  PORT: Number(process.env.PORT) || 3000,
-  NODE_ENV: process.env.NODE_ENV || 'development',
+  PORT: Number(process.env.PORT) || APP_DEFAULTS.PORT,
+  NODE_ENV: process.env.NODE_ENV || APP_DEFAULTS.NODE_ENV,
+  RATE_LIMIT_WINDOW_MS:
+    Number(process.env.RATE_LIMIT_WINDOW_MS) || APP_DEFAULTS.RATE_LIMIT_WINDOW_MS,
+  RATE_LIMIT_MAX_REQUESTS:
+    Number(process.env.RATE_LIMIT_MAX_REQUESTS) || APP_DEFAULTS.RATE_LIMIT_AUTH_MAX_REQUESTS,
+  RATE_LIMIT_AUTH_MAX_REQUESTS:
+    Number(process.env.RATE_LIMIT_AUTH_MAX_REQUESTS) || APP_DEFAULTS.RATE_LIMIT_AUTH_MAX_REQUESTS,
 } as const;

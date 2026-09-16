@@ -5,11 +5,13 @@ import { HTTP_STATUS } from './constants/http-status';
 import { morganMiddleware } from './middlewares/logger.middleware';
 import { AppError } from './utils/app-error';
 import { errorHandler } from './middlewares/error.middleware';
+import { globalLimiter } from './config/rate-limit';
 
 const app: Express = express();
 
 app.use(helmet());
 app.use(cors());
+app.use(globalLimiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morganMiddleware);
